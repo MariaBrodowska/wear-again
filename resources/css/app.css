@@ -9,6 +9,31 @@ html, body {
     height: 100%;
     overflow: hidden;
 }
+.box input{
+    padding: 10px;
+    margin-top: 25px;
+    border-radius: 7px;
+    margin-right: 5px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 13px;
+}
+.box input::placeholder{
+    color: #fff;
+
+}
+.box input:focus {
+    outline: none;
+    border: 2px solid rgb(205, 163, 163);
+}
+.box{
+    backdrop-filter: blur(5px);
+    /*border: 1px solid #fff;*/
+    box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+    text-align: center;
+    padding-bottom: 50px;
+}
 /*#background {*/
 /*    position: relative;*/
 /*    width: 100%;*/

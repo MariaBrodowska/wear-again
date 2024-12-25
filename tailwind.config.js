@@ -14,6 +14,21 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            keyframes: {
+                moveBackground: {
+                    '0%': { backgroundPosition: '100% 0%' },
+                    '100%': { backgroundPosition: '0% 100%' },
+                },
+                moveBackground2: {
+                    '0%': { backgroundPosition: '0% 100%' },
+                    '100%': { backgroundPosition: '100% 0%' },
+                },
+
+            },
+            animation: {
+                moveBackground: 'moveBackground 20s linear infinite',
+                moveBackground2: 'moveBackground2 25s linear infinite',
+            },
         },
     },
     plugins: [
