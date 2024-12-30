@@ -15,12 +15,17 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    {{--tło--}}
+    <div id="background" class="absolute left-0 top-0 h-full w-full z-0">
+        <img class="object-cover h-full w-full bg-center bg-repeat filter blur-sm" src="{{ asset('assets/img/background.png') }}" alt="background">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+        <div class="min-h-screen relative z-20">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="bg-nav-gray1 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -32,5 +37,7 @@
                 {{ $slot }}
             </main>
         </div>
+
     </body>
 </html>
+{{--STRONA DASHBOARD--}}

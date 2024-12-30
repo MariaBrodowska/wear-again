@@ -29,6 +29,11 @@ export default {
                 moveBackground: 'moveBackground 20s linear infinite',
                 moveBackground2: 'moveBackground2 25s linear infinite',
             },
+            colors: {
+                'nav-gray1': '#202226',
+                'nav-gray2': '#2f3137',
+                'nav-pink': '#c585a5'
+            }
         },
     },
     plugins: [
