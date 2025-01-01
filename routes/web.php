@@ -1,19 +1,24 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OffersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
 
-//Route::get('/dashboard', [DashboardController::class, 'index'])
-//    ->middleware(['auth','verified'])
-//    ->name('dashboard');
+//Route::get('/offers', function () {
+//    return view('offers');
+//})->middleware(['auth', 'verified'])->name('offers');
+
+Route::get('/offers', [OffersController::class, 'index'])
+    ->middleware(['auth','verified'])
+    ->name('offers');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -6,6 +6,8 @@
     <x-application-title/>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased text-white">
@@ -19,31 +21,29 @@
     <div class="absolute inset-0 bg-gradient-to-l from-black to-transparent opacity-20 rounded-lg"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-20 rounded-lg"></div>
 </div>
+
 <div id="nawigacja" class="flex items-center justify-between mx-5 my-8 relative z-20">
 
-    {{--o nas--}}
+    {{-- nawigacja --}}
     <nav class="relative">
         <a
-            href="{{ url('/aboutus') }}"
-            class="relative inline-block px-3 py-2 overflow-hidden group border-transparent transition-all duration-500">
-            <span class="transition-all group-hover:text-pink-200">O nas</span>
-            <span class="absolute inset-0 border-b-2 border-pink-300 transform scale-x-0 origin-left transition-all duration-500 group-hover:scale-x-100"></span>
+            href="{{ url('/') }}"
+            class="flex items-center justify-center ml-4 w-12 h-12 bg-pink-300 text-black rounded-full shadow-lg border-2 border-pink-300 hover:bg-transparent hover:text-pink-300 hover:border-pink-300 transition-all duration-500 group"
+        >
+            <svg
+                class="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
         </a>
     </nav>
 
-    {{--szukaj--}}
-    <nav class="relative flex items-center space-x-2">
-        <form action="" method="GET" class="relative justify-start">
-            <input class="ml-2 sm:max-w-28 sm:py-1.5 lg:max-w-72 lg:ml-6 overlay_search-input text-black focus:border-none focus:ring-0" name="query" placeholder="Wyszukaj przedmioty" type="text">
-            <button
-                type="submit"
-                class="mr-2 lg:px-6 sm:px-3 sm:py-2 border text-sm border-pink-300 px-4 py-2.5 hover:text-black/70 hover:bg-pink-300 hover:rounded-xl transition-all duration-500"
-            >Szukaj
-            </button>
-        </form>
-    </nav>
-
-    {{--zaloguj/zarejestruj--}}
+    {{-- zaloguj/zarejestruj --}}
     @if (Route::has('login'))
         <nav class="relative flex-1 text-right">
             @auth
@@ -60,11 +60,10 @@
                     <span class="transition-all group-hover:text-pink-200">Zaloguj się</span>
                     <span class="absolute inset-0 border-b-2 border-pink-300 transform scale-x-0 origin-left transition-all duration-500 group-hover:scale-x-100"></span>
                 </a>
-                </a>
                 @if (Route::has('register'))
                     <a
                         href="{{ route('register') }}"
-                    class="relative inline-block px-3 py-2 overflow-hidden group border-transparent transition-all duration-500">
+                        class="relative inline-block px-3 py-2 overflow-hidden group border-transparent transition-all duration-500">
                         <span class="transition-all group-hover:text-pink-200">Zarejestruj</span>
                         <span class="absolute inset-0 border-b-2 border-pink-300 transform scale-x-0 origin-left transition-all duration-500 group-hover:scale-x-100"></span>
                     </a>
@@ -74,22 +73,35 @@
     @endif
 </div>
 
-{{--logo--}}
+{{-- logo --}}
 <div class="absolute top-3 left-1/2 transform -translate-x-1/2 z-30">
     <x-application-logo classes="w-22 h-20"/>
 </div>
 
-<div id="container" class="relative flex flex-col items-center text-white pt-20">
-    <p class="text-6xl font-bold mt-4 mb-3">Wear Again</p>
-    <p class="text-md mt-4">Czas na zmiany w szafie? Sprzedaj, co nie nosisz już od lat i zyskaj na nowo!</p>
-    <p class="text-md mt-1">Zrób miejsce na świeże inspiracje.</p>
+<div id="container" class="relative flex flex-col items-center text-white pt-20 px-5">
+    <h1 class="text-6xl font-bold mt-4 mb-6">O nas</h1>
+    <p class="text-lg max-w-4xl text-center mb-6">
+        Jesteśmy zespołem pasjonatów, którzy łączą miłość do mody z troską o naszą planetę. Wierzymy, że każda rzecz zasługuje na drugie życie, a nasza platforma, Wear Again, powstała z myślą o tych, którzy pragną odświeżyć swoją szafę, jednocześnie dbając o środowisko.
+    </p>
+    <p class="text-lg max-w-4xl text-center mb-6">
+        Naszą misją jest walka z marnotrawstwem w przemyśle odzieżowym. Umożliwiamy sprzedaż i zakup używanych ubrań online, promując w ten sposób zrównoważony i świadomy sposób konsumowania mody.
+    </p>
+    <p class="text-lg max-w-4xl text-center">
+        Dołącz do naszej społeczności i bądź częścią ruchu, który zmienia przyszłość mody na lepsze! Razem możemy tworzyć świat, w którym każdy wybór ma znaczenie.
+    </p>
+</div>
 
-    <a
-        href="{{ route('register') }}"
-        class="border-2 text-md border-pink-300 px-10 p-2 my-10 ring-1 ring-transparent hover:text-black/70 hover:bg-pink-300 hover: hover:rounded-3xl focus:outline-none focus-visible:ring-[#FF2D20] transition-all duration-700"
-    >
-        Sprzedaj już teraz!
+<div id="social-media" class="flex justify-center space-x-8 mt-10">
+    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" class="w-12 h-12 bg-pink-300 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-pink-700 transition-all duration-300 transform hover:scale-110">
+        <ion-icon name="logo-facebook" class="text-2xl"></ion-icon>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="w-12 h-12 bg-pink-300 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-pink-700 transition-all duration-300 transform hover:scale-110">
+        <ion-icon name="logo-instagram" class="text-2xl"></ion-icon>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter" class="w-12 h-12 bg-pink-300 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-pink-700 transition-all duration-300 transform hover:scale-110">
+        <ion-icon name="logo-twitter" class="text-2xl"></ion-icon>
     </a>
 </div>
+
 </body>
 </html>

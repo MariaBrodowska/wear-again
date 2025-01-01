@@ -1,10 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-{{--        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">--}}
-{{--            {{ __('Strona główna') }}--}}
-{{--        </h2>--}}
         <nav class="my-6">
             <form action="" method="GET" class="flex-row items-center justify-center w-full">
+
                 {{--pole search--}}
                 <div class="relative w-full flex justify-center my-6">
                 <input class="sm:py-1.5 lg:!max-w-5xl w-2/3 overlay_search-input text-black focus:border-none focus:ring-0" name="query" placeholder="Wyszukaj przedmioty" type="text">
@@ -15,6 +13,7 @@
                 </button>
                 </div>
                 <div class="relative flex flex-wrap gap-4 w-2/3 justify-center items-center mx-44">
+
                 <!--kategorie-->
                 <select name="category" class="ml-4 sm:px-3 sm:py-2 lg:px-4 lg:pr-8 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl">
                     <option value="">Wybierz kategorię</option>
@@ -25,9 +24,11 @@
                 <!--cena-->
                 <input name="min_price" type="number" placeholder="Min Cena" class="ml-4 sm:px-3 sm:py-2 lg:px-5 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('min_price') }}">
                 <input name="max_price" type="number" placeholder="Max Cena" class="ml-4 sm:px-3 sm:py-2 lg:px-5 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('max_price') }}">
+
                 <!--data-->
                 <input name="date_from" type="date" class="ml-4 sm:px-3 sm:py-2 lg:px-5 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('date_from') }}">
                 <input name="date_to" type="date" class="ml-4 sm:px-3 sm:py-2 lg:px-5 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('date_to') }}">
+
                 <!--filtruj-->
                 <button
                     type="submit"
