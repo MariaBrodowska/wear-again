@@ -1,4 +1,4 @@
-<a href="{{url('/offers')}}">
+<a href="{{url('/ogloszenia')}}">
     <img src="{{ asset('assets/img/logo.png') }}" class="{{$classes}}" alt="logo">
 </a>
 

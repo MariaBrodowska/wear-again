@@ -24,7 +24,7 @@
     {{--o nas--}}
     <nav class="relative">
         <a
-            href="{{ url('/aboutus') }}"
+            href="{{ url('/onas') }}"
             class="relative inline-block px-3 py-2 overflow-hidden group border-transparent transition-all duration-500">
             <span class="transition-all group-hover:text-pink-200">O nas</span>
             <span class="absolute inset-0 border-b-2 border-pink-300 transform scale-x-0 origin-left transition-all duration-500 group-hover:scale-x-100"></span>
@@ -48,7 +48,7 @@
         <nav class="relative flex-1 text-right">
             @auth
                 <a
-                    href="{{ url('/offers') }}"
+                    href="{{ url('/ogloszenia') }}"
                     class="relative inline-block px-3 py-2 overflow-hidden group border-transparent transition-all duration-500">
                     <span class="transition-all group-hover:text-pink-200">Strona główna</span>
                     <span class="absolute inset-0 border-b-2 border-pink-300 transform scale-x-0 origin-left transition-all duration-500 group-hover:scale-x-100"></span>
@@ -85,7 +85,7 @@
     <p class="text-md mt-1">Zrób miejsce na świeże inspiracje.</p>
 
     <a
-        href="{{ route('register') }}"
+        href="{{ route('offers.index') }}"
         class="border-2 text-md border-pink-300 px-10 p-2 my-10 ring-1 ring-transparent hover:text-black/70 hover:bg-pink-300 hover: hover:rounded-3xl focus:outline-none focus-visible:ring-[#FF2D20] transition-all duration-700"
     >
         Sprzedaj już teraz!

@@ -9,16 +9,16 @@
                 </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
+                    <x-nav-link :href="route('offers.index')" :active="request()->routeIs('offers.index')">
                         {{ __('Strona główna') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    <x-nav-link :href="route('offers.create')" :active="request()->routeIs('offers.create')">
                         {{ __('Dodaj ogłoszenie') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    <x-nav-link :href="route('offers.user')" :active="request()->routeIs('offers.user')">
                         {{ __('Moje ogłoszenia') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    <x-nav-link :href="route('offers.favorite')" :active="request()->routeIs('offers.fovorite')">
                         {{ __('Ulubione') }}
                     </x-nav-link>
                 </div>
@@ -72,7 +72,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
+            <x-responsive-nav-link :href="route('offers.index')" :active="request()->routeIs('offers.index')">
                 {{ __('Strona główna') }}
             </x-responsive-nav-link>
         </div>

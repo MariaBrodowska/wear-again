@@ -48,7 +48,7 @@
         <nav class="relative flex-1 text-right">
             @auth
                 <a
-                    href="{{ url('/offers') }}"
+                    href="{{ url('/ogloszenia') }}"
                     class="relative inline-block px-3 py-2 overflow-hidden group border-transparent transition-all duration-500">
                     <span class="transition-all group-hover:text-pink-200">Strona główna</span>
                     <span class="absolute inset-0 border-b-2 border-pink-300 transform scale-x-0 origin-left transition-all duration-500 group-hover:scale-x-100"></span>
