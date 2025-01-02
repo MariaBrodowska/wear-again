@@ -18,8 +18,13 @@
         <div class="absolute inset-0 bg-black opacity-50"></div>
     </div>
         <div class="min-h-screen relative z-20">
-            @include('layouts.navigation')
-
+            @auth
+{{--                zalogowany--}}
+                @include('layouts.navigation')
+            @else
+{{--                niezalogowany--}}
+                @include('layouts.navigation-guest')
+            @endauth
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-nav-gray1 shadow">

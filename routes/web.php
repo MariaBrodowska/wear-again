@@ -13,7 +13,7 @@ Route::get('/onas', function () {
 });
 
 Route::get('/ogloszenia', [OffersController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('offers.index');
+    ->name('offers.index');
 
 Route::get('/ogloszenia/dodaj', [OffersController::class, 'create'])
     ->middleware(['auth', 'verified'])->name('offers.create');

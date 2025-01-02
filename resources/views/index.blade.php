@@ -85,7 +85,7 @@
     <p class="text-md mt-1">Zrób miejsce na świeże inspiracje.</p>
 
     <a
-        href="{{ route('offers.index') }}"
+        href="{{ route('register') }}"
         class="border-2 text-md border-pink-300 px-10 p-2 my-10 ring-1 ring-transparent hover:text-black/70 hover:bg-pink-300 hover: hover:rounded-3xl focus:outline-none focus-visible:ring-[#FF2D20] transition-all duration-700"
     >
         Sprzedaj już teraz!
