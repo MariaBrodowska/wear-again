@@ -30,8 +30,11 @@
                     <select name="category" id="category" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500" required
                     >
                         <option value="">Wybierz kategorię</option>
-                        <option value="clothing" {{ old('category') == 'clothing' ? 'selected' : '' }}>Odzież</option>
-                        <option value="toys" {{ old('category') == 'toys' ? 'selected' : '' }}>Zabawki</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->name}}" {{ old('category') == 'clothing' ? 'selected' : '' }}>{{$category->name}}</option>
+                        @endforeach
+{{--                        <option value="clothing" {{ old('category') == 'clothing' ? 'selected' : '' }}>Odzież</option>--}}
+{{--                        <option value="toys" {{ old('category') == 'toys' ? 'selected' : '' }}>Zabawki</option>--}}
                     </select>
                 </div>
 

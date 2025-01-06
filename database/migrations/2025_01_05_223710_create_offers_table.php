@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users'); //sprzedawca
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); //sprzedawca
             $table->string('name'); //nazwa ubrania
             $table->string('description'); //opis ubrania
-            $table->foreignId('size_id')->nullable()->constrained('sizes'); //rozmiar
-            $table->foreignId('category_id')->constrained('categories'); //kategoria
+            $table->foreignId('size_id')->nullable()->constrained('sizes')->nullonDelete(); //rozmiar
+            $table->foreignId('category_id')->constrained('categories')->nullOnDelete(); //kategoria
             $table->decimal('price',10,2); //cena
             $table->string('condition'); //stan
             $table->text('image_path')->nullable(); //sciezka do zdjecia
