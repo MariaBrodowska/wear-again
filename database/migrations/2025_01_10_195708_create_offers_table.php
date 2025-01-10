@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); //sprzedawca
+            $table->foreignId('seller_id')->constrained('users')->onDelete('cascade'); //sprzedawca
             $table->string('name'); //nazwa ubrania
             $table->string('description'); //opis ubrania
             $table->foreignId('size_id')->nullable()->constrained('sizes')->nullonDelete(); //rozmiar
-            $table->foreignId('category_id')->constrained('categories')->nullOnDelete(); //kategoria
-            $table->decimal('price',10,2); //cena
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete(); //kategoria
+            $table->decimal('price',10,2)->unsigned(); //cena
             $table->string('condition'); //stan
             $table->text('image_path')->nullable(); //sciezka do zdjecia
             $table->enum('status',['dostępny','sprzedany'])->default('dostępny'); //status produktu
+            $table->foreignId('order_id')->nullable()->constrained('orders')->nullOnDelete();
             $table->timestamps();
         });
     }
