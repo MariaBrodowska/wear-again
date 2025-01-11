@@ -71,10 +71,25 @@ class OffersController extends Controller
         $offer->save();
         return redirect()->route('offers.user')->with('message', 'Ogłoszenie dodane poprawnie');
     }
-    public function edit(){
-        return view('offers.edit');
+    public function edit($id){
+        $offer = Offer::find($id);
+        $categories = Category::all();
+        $sizes = Size::all();
+        return view('offers.edit', compact('offer','categories','sizes'));
     }
-    public function update(){
+    public function update($id, Request $request){
+        $offer = Offer::find($id);
+        $offer->name = $request->title;
+        $offer->description = $request->description;
+        $offer->size_id = $request->size;
+        $offer->category_id = $request->category;
+        $offer->price = $request->price;
+        $offer->condition= $request->condition;
+        if($request->photo!="") {
+            $offer->image_path = $request->photo;
+        }
+        $offer->save();
+        return redirect()->route('offers.user')->with('message', 'Ogłoszenie zaktualizowane poprawnie');
     }
     public function user(){
         $offers = Offer::where('seller_id', Auth::id())->get();
@@ -83,13 +98,14 @@ class OffersController extends Controller
     public function favorite(){
         return view('offers.favorite');
     }
-    public function destroy($id)
-    {
-        $offer = Offer::findOrFail($id);
-        if ($offer->user_id !== Auth::id()) {
-            abort(403, 'Brak dostępu do tego ogłoszenia');
-        }
-        $offer->delete();
-        return redirect()->route('offers.user')->with('success', 'Ogłoszenie zostało usunięte.');
+    public function delete($id){
+        Offer::destroy($id);
+        return redirect()->route('offers.user')->with('message', 'Ogłoszenie zostało usunięte');
     }
+
+    public function show($id){
+        $offer = Offer::findOrFail($id);
+        return view('offers.single', ['offer' => $offer]);
+    }
+
 }

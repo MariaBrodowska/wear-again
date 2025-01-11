@@ -12,20 +12,21 @@ Route::get('/onas', function () {
     return view('aboutus');
 });
 
-Route::get('/ogloszenia', [OffersController::class, 'index'])
-    ->name('offers.index');
+Route::get('/ogloszenia', [OffersController::class, 'index'])->name('offers.index');
 
-Route::get('/ogloszenia/dodaj', [OffersController::class, 'create'])
-    ->middleware(['auth', 'verified'])->name('offers.create');
+Route::get('/ogloszenia/moje', [OffersController::class, 'user'])->name('offers.user');
 
-Route::get('/ogloszenia/edytuj', [OffersController::class, 'edit'])
-    ->middleware(['auth', 'verified'])->name('offers.edit');
+Route::get('/ogloszenia/dodaj', [OffersController::class, 'create'])->name('offers.create');
 
-Route::get('/ogloszenia/wyswietl', [OffersController::class, 'single'])
-    ->middleware(['auth', 'verified'])->name('offers.single');
+Route::post('/ogloszenia/zapisz', [OffersController::class, 'store'])->name('offers.store');
 
-Route::get('/ogloszenia/moje', [OffersController::class, 'user'])
-    ->middleware(['auth', 'verified'])->name('offers.user');
+Route::get('/ogloszenia/edytuj/{id}', [OffersController::class, 'edit'])->name('offers.edit');
+
+Route::put('offers/zmien/{id}', [OffersController::class, 'update'])->name('offers.update');
+
+Route::delete('offers/usun/{id}', [OffersController::class, 'delete'])->name('offers.delete');
+
+Route::get('/offers/{id}', [OffersController::class, 'show'])->name('offers.show');
 
 Route::get('/ogloszenia/ulubione', [OffersController::class, 'favorite'])
     ->middleware(['auth', 'verified'])->name('offers.favorite');

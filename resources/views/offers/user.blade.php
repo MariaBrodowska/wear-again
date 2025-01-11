@@ -19,11 +19,13 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
             @foreach($offers as $offer)
                 <div class="flex flex-col pt-0 bg-gray-100 rounded-sm">
+                    <a href="{{ route('offers.show', ['id' => $offer->id]) }}" class="h-3/4">
                     @if ($offer->image_path)
-                        <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-3/4 object-cover" alt="{{ $offer->name }}">
+                        <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-full object-cover" alt="{{ $offer->name }}">
                     @else
-                        <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-3/4 object-cover" alt="default image">
+                        <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-full object-cover" alt="default image">
                     @endif
+                    </a>
                     <div class="p-2">
                         <h5 class="text-sm font-medium text-gray-700">{{ $offer->name }}</h5>
                         <h5 class="text-xs font-medium text-gray-700">{{ $offer->size->name }}, {{ $offer->condition }}</h5>
@@ -38,13 +40,13 @@
                                 Sprzedany</h5>
                             <p class="mt-2 text-md font-bold line-through text-nav-pink">{{ $offer->price }} zł</p>
                         @endif
-                        <div class="flex w-full justify-center">
+                        <div class="flex w-full justify-center z-20">
                             @csrf
-                                <a href="{{ route('offers.edit', $offer->id) }}"
+                                <a href="{{ route('offers.edit', ['id' => $offer->id]) }}"
                                    class="text-sm text-center mt-3 mr-2 px-5 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">
                                     Edytuj
                                 </a>
-                            <form action="{{ route('offers.destroy', $offer->id) }}" method="POST">
+                            <form action="{{ route('offers.delete', ['id' => $offer->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

@@ -1,0 +1,52 @@
+@extends('offers.index')
+
+@section('content')
+    <div class="max-w-4xl mx-auto px-6 px-8 py-4">
+        <div class="bg-white shadow-lg sm:rounded-lg p-6">
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="w-1/2">
+                    @if ($offer->image_path)
+                        <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full rounded-md object-cover" alt="{{ $offer->name }}">
+                    @else
+                        <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-auto rounded-md object-cover" alt="default image">
+                    @endif
+                </div>
+                <div class="flex flex-col w-2/3 pl-6 mt-4 mt-0 h-full">
+                    <h1 class="text-2xl font-bold text-gray-700 mb-8">{{ $offer->name }}</h1>
+                    <p class="text-md text-gray-600">Kategoria: <span class="font-medium">{{ $offer->category->name }}</span></p>
+                    <p class="text-md text-gray-600">Rozmiar: <span class="font-medium">{{ $offer->size->name }}</span></p>
+                    <p class="text-md text-gray-600">Stan: <span class="font-medium">{{ $offer->condition }}</span></p>
+                    <p class="text-md text-gray-600">Cena: <span class="text-nav-pink font-bold">{{ $offer->price }} zł</span></p>
+
+                    @if ($offer->description)
+                        <p class="mt-8 text-sm text-gray-700">Opis: {{ $offer->description }}</p>
+                    @else
+                        <p class="mt-8 mb-5 text-sm text-gray-400 italic">Brak opisu dla tego ogłoszenia.</p>
+                    @endif
+
+                    <div class="mt-6 flex items-center space-x-3">
+                        <a href="" class="flex items-center text-sm text-gray-600 hover:text-gray-800">
+                            <ion-icon name="person-circle-outline" class="size-6"></ion-icon>
+                            <span class="ml-1">{{ $offer->user->name }}</span>
+                        </a>
+                    </div>
+
+                    <div class="relative pt-10 text-sm text-gray-600 self-end">
+                        <span class="font-medium">{{ $offer->getFavoritesCount() }}</span> osób polubiło to ogłoszenie.
+                    </div>
+
+                    <div class="absolute bottom-6 right-6 flex space-x-4">
+                        <a href="{{ route('offers.user') }}"
+                           class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition duration-300">
+                            Wróć do listy
+                        </a>
+                        <button
+                            class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
+                            Kup teraz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

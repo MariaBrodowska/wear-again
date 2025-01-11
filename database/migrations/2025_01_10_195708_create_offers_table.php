@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('seller_id')->constrained('users')->onDelete('cascade'); //sprzedawca
             $table->string('name'); //nazwa ubrania
-            $table->string('description'); //opis ubrania
+            $table->string('description')->nullable(); //opis ubrania
             $table->foreignId('size_id')->nullable()->constrained('sizes')->nullonDelete(); //rozmiar
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete(); //kategoria
             $table->decimal('price',10,2)->unsigned(); //cena
