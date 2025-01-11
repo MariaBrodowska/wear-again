@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('delivery_methods', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique(); //sposob dostawy
+            $table->decimal('price',10,2)->unsigned();
         });
     }
 

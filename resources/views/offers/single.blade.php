@@ -12,7 +12,10 @@
                     @endif
                 </div>
                 <div class="flex flex-col w-2/3 pl-6 mt-4 mt-0 h-full">
-                    <h1 class="text-2xl font-bold text-gray-700 mb-8">{{ $offer->name }}</h1>
+                    <h1 class="text-2xl font-bold text-gray-700 mb-2 underline">{{ $offer->name }}</h1>
+{{--                    <span class="border-b-2 border-gray-200"></span>--}}
+                    <p class="text-xs font-medium text-gray-500">Dodane: {{ $offer->created_at->format('d.m.Y H:i') }}</p>
+                    <p class="text-xs font-medium text-gray-500 mb-7">Edytowane: {{ $offer->updated_at->format('d.m.Y H:i') }}</p>
                     <p class="text-md text-gray-600">Kategoria: <span class="font-medium">{{ $offer->category->name }}</span></p>
                     <p class="text-md text-gray-600">Rozmiar: <span class="font-medium">{{ $offer->size->name }}</span></p>
                     <p class="text-md text-gray-600">Stan: <span class="font-medium">{{ $offer->condition }}</span></p>
@@ -36,14 +39,23 @@
                     </div>
 
                     <div class="absolute bottom-6 right-6 flex space-x-4">
-                        <a href="{{ route('offers.user') }}"
+                        <a href="{{ route('offers.index') }}"
                            class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition duration-300">
                             Wróć do listy
                         </a>
+                        @if($offer->seller_id == Auth::id())
+                            <a href="{{ route('offers.user') }}">
+                            <button
+                                class="bg-nav-pink hover:bg-nav-pink2 text-white py-2 px-4 rounded-md transition duration-300">
+                                Otwórz moje ogłoszenia
+                            </button>
+                            </a>
+                        @else
                         <button
                             class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
                             Kup teraz
                         </button>
+                        @endif
                     </div>
                 </div>
             </div>

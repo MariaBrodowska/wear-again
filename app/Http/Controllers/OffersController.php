@@ -10,55 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class OffersController extends Controller
 {//dodawanie nowych, edytowanie, usuwanie, wyswietlanie pojedynczej
-    public function index(Request $request){
-        $offers = Offer::all(); //pobieramy wszystkie rekordy z tabeli offers
-        $categories = Category::all();
-        $sizes = Size::all();
-        $query = Offer::query();
-
-        if ($request->filled('category')) {
-            $query->where('category_id', $request->category);
-        }
-        if ($request->filled('min_price')) {
-            $query->where('price', '>=', $request->min_price);
-        }
-        if ($request->filled('max_price')) {
-            $query->where('price', '<=', $request->max_price);
-        }
-
-        if ($request->filled('date_from')) {
-            $query->whereDate('created_at', '>=', $request->date_from);
-        }
-
-        if ($request->filled('date_to')) {
-            $query->whereDate('created_at', '<=', $request->date_to);
-        }
-
-        if ($request->filled('sort')) {
-            switch ($request->input('sort')) {
-                case 'newest':
-                    $query->orderBy('created_at', 'desc');
-                    break;
-                case 'oldest':
-                    $query->orderBy('created_at', 'asc');
-                    break;
-                case 'price_low':
-                    $query->orderBy('price', 'asc');
-                    break;
-                case 'price_high':
-                    $query->orderBy('price', 'desc');
-                    break;
-            }
-        }
-        $offers = $query;
-        return view('offers.index', compact('offers','categories','sizes'));
-    }
-    public function create(){
+    public function create(){ //dodawanie
         $categories = Category::all();
         $sizes = Size::all();
         return view('offers.create', ['categories' => $categories], ['sizes' => $sizes]);
     }
-    public function store(Request $request){
+    public function store(Request $request){ //zapis dodanej
         $offer = new Offer();
         $offer->seller_id = Auth::id();
         $offer->name = $request->title;
@@ -71,13 +28,13 @@ class OffersController extends Controller
         $offer->save();
         return redirect()->route('offers.user')->with('message', 'Ogłoszenie dodane poprawnie');
     }
-    public function edit($id){
+    public function edit($id){ //edytowanie
         $offer = Offer::find($id);
         $categories = Category::all();
         $sizes = Size::all();
         return view('offers.edit', compact('offer','categories','sizes'));
     }
-    public function update($id, Request $request){
+    public function update($id, Request $request){ //zapis edytowanej
         $offer = Offer::find($id);
         $offer->name = $request->title;
         $offer->description = $request->description;
@@ -91,19 +48,15 @@ class OffersController extends Controller
         $offer->save();
         return redirect()->route('offers.user')->with('message', 'Ogłoszenie zaktualizowane poprawnie');
     }
-    public function user(){
-        $offers = Offer::where('seller_id', Auth::id())->get();
-        return view('offers.user', ['offers' => $offers]);
-    }
-    public function favorite(){
-        return view('offers.favorite');
-    }
-    public function delete($id){
+    public function delete($id){ //usuwanie
         Offer::destroy($id);
         return redirect()->route('offers.user')->with('message', 'Ogłoszenie zostało usunięte');
     }
-
-    public function show($id){
+    public function user(){ //wyswietlanie moich
+        $offers = Offer::where('seller_id', Auth::id())->get();
+        return view('offers.user', ['offers' => $offers]);
+    }
+    public function show($id){ //wyswietlanie pojedynczej
         $offer = Offer::findOrFail($id);
         return view('offers.single', ['offer' => $offer]);
     }

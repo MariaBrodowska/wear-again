@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OffersController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CategorySearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,7 +14,8 @@ Route::get('/onas', function () {
     return view('aboutus');
 });
 
-Route::get('/ogloszenia', [OffersController::class, 'index'])->name('offers.index');
+Route::get('/ogloszenia', [CategorySearchController::class, 'index'])->name('offers.index');
+Route::get('/użytkownicy', [CategorySearchController::class, 'index'])->name('users.index');
 
 Route::get('/ogloszenia/moje', [OffersController::class, 'user'])->name('offers.user');
 
@@ -22,13 +25,14 @@ Route::post('/ogloszenia/zapisz', [OffersController::class, 'store'])->name('off
 
 Route::get('/ogloszenia/edytuj/{id}', [OffersController::class, 'edit'])->name('offers.edit');
 
-Route::put('offers/zmien/{id}', [OffersController::class, 'update'])->name('offers.update');
+Route::put('ogloszenia/zmien/{id}', [OffersController::class, 'update'])->name('offers.update');
 
-Route::delete('offers/usun/{id}', [OffersController::class, 'delete'])->name('offers.delete');
+Route::delete('ogloszenia/usun/{id}', [OffersController::class, 'delete'])->name('offers.delete');
 
-Route::get('/offers/{id}', [OffersController::class, 'show'])->name('offers.show');
+Route::get('/ogloszenia/{id}', [OffersController::class, 'show'])->name('offers.show');
+Route::get('/uzytkownicy/{id}', [UsersController::class, 'show'])->name('users.show');
 
-Route::get('/ogloszenia/ulubione', [OffersController::class, 'favorite'])
+Route::get('/ogloszenia/ulubione', [OffersController::class, 'favorite']) //favoritecontroller
     ->middleware(['auth', 'verified'])->name('offers.favorite');
 
 

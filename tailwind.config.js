@@ -32,7 +32,8 @@ export default {
             colors: {
                 'nav-gray1': '#202226',
                 'nav-gray2': '#2f3137',
-                'nav-pink': '#c585a5'
+                'nav-pink': '#c585a5',
+                'nav-pink2': '#976580'
             }
         },
     },
