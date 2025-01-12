@@ -127,18 +127,26 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 pt-4">
                             @foreach($offers as $offer)
                                 <div class="flex flex-col pt-0 bg-gray-100 rounded-sm">
-                                        <a href="" class="flex items-center p-1 text-sm text-gray-600 hover:text-gray-900">
+                                        <a href="{{route('users.show', ['id' => $offer->user->id]) }}" class="flex items-center p-1 text-sm text-gray-600 hover:text-gray-900">
                                             <ion-icon name="person-circle-outline" class="size-6"></ion-icon>
                                             <span class="ml-1">{{ $offer->user->name }}</span>
                                         </a>
                                     <a href="{{ route('offers.show', ['id' => $offer->id]) }}" class="h-3/4">
                                         @if ($offer->image_path)
-                                            <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-full object-cover" alt="{{ $offer->name }}">
+                                            <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105" alt="{{ $offer->name }}">
                                         @else
-                                            <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-full object-cover" alt="default image">
+                                            <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105" alt="default image">
                                         @endif
                                     </a>
-                                    <div class="p-2">
+                                    <div class="p-2 flex flex-col justify-center items-start">
+                                       <button type="button" id="toggle-favorite" class="self-end flex justify-center items-center">
+                                        <ion-icon
+                                            name="{{ auth()->user()->hasFavorite($offer->id) ? 'heart' : 'heart-outline' }}"
+                                            class="size-5 mr-1" id="heart"
+                                            data-offer-id="{{ $offer->id }}">
+                                        </ion-icon>
+                                        {{ $offer->favoritesCount() }}
+                                       </button>
                                         <h5 class="text-sm font-medium text-gray-700">{{ $offer->name }}</h5>
                                         <h5 class="text-xs font-medium text-gray-700">{{ $offer->size->name }}, {{ $offer->condition }}</h5>
                                         @if($offer->status == 'dostępny')
@@ -149,10 +157,11 @@
                                         @else
                                             <h5 class="text-xs font-medium text-gray-700 flex items-center justify-start">
                                                 <ion-icon name="close-circle-outline" class="text-red-600 pr-1 w-6 h-6"></ion-icon>
+
                                                 Sprzedany</h5>
                                             <p class="mt-2 text-md font-bold line-through text-nav-pink">{{ $offer->price }} zł</p>
                                         @endif
-                                        <h5 class="text-xs font-medium text-gray-500 text-end">Dodane: {{ $offer->created_at->format('d.m.Y H:i') }}</h5>
+                                        <h5 class="text-xs font-medium text-gray-500 self-end">Dodane: {{ $offer->created_at->format('d.m.Y H:i') }}</h5>
                                     </div>
                                 </div>
                             @endforeach
@@ -182,4 +191,15 @@
             toggleFiltersBtn.classList.remove('translate-y-[-10px]');
         }
     });
+
+    const favorite = document.getElementById('toggle-favorite');
+    const heart = document.getElementById('heart');
+    favorite.addEventListener('click', () => {
+        if(heart.name === 'heart'){
+            heart.name = 'heart-outline';
+        }
+        else{
+            heart.name = 'heart';
+        }
+    }
 </script>

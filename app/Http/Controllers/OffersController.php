@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Favorite;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use App\Models\Offer;
@@ -54,11 +55,12 @@ class OffersController extends Controller
     }
     public function user(){ //wyswietlanie moich
         $offers = Offer::where('seller_id', Auth::id())->get();
-        return view('offers.user', ['offers' => $offers]);
+        return view('offers.user', compact('offers'));
     }
     public function show($id){ //wyswietlanie pojedynczej
-        $offer = Offer::findOrFail($id);
-        return view('offers.single', ['offer' => $offer]);
+        $offer = Offer::find($id);
+        return view('offers.single', compact('offer',));
     }
+
 
 }

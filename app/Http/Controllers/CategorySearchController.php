@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Favorite;
 use App\Models\Offer;
 use App\Models\Size;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategorySearchController extends Controller
 {//filtrowanie ofert, wyszukiwanie, kategorie
@@ -15,6 +17,7 @@ class CategorySearchController extends Controller
         $sizes = Size::all();
         $query = Offer::query();
         $userQuery = User::query();
+        $users = User::all();
         $searchType = $request->input('search_type', 'items');
 
         if($searchType == 'items') {
@@ -57,7 +60,7 @@ class CategorySearchController extends Controller
                     ->orWhere('description', 'like', '%' . $request->input('query') . '%');
             }
             $offers = $query->paginate(12);
-            return view('offers.index', compact('offers','categories','sizes'));
+            return view('offers.index', compact('offers','categories','sizes','users'));
         }
         else{
             if ($request->filled('query')) {
@@ -65,6 +68,7 @@ class CategorySearchController extends Controller
                     ->orWhere('email', 'like', '%' . $request->input('query') . '%');
             }
             $users = $userQuery->paginate(12);
+
             return view('users.index', compact('users', 'searchType', 'categories', 'sizes'));
         }
     }

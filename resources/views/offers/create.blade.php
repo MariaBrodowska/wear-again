@@ -1,7 +1,6 @@
 @extends('offers.index')
 
 @section('content')
-
 <div class="py-12 pt-0 mt-2">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow-lg sm:rounded-lg p-6">
@@ -68,5 +67,4 @@
         </div>
     </div>
 </div>
-
 @endsection

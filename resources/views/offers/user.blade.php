@@ -61,7 +61,6 @@
             @endforeach
         </div>
     </div>
-
 <script>
     function closeAlert() {
         const alert = document.getElementById('alert-5');

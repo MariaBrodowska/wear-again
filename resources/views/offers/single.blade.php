@@ -6,14 +6,13 @@
             <div class="flex flex-col md:flex-row items-center md:items-start">
                 <div class="w-1/2">
                     @if ($offer->image_path)
-                        <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full rounded-md object-cover" alt="{{ $offer->name }}">
+                        <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-full object-cover" alt="{{ $offer->name }}">
                     @else
-                        <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-auto rounded-md object-cover" alt="default image">
+                        <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-full object-cover" alt="default image">
                     @endif
                 </div>
                 <div class="flex flex-col w-2/3 pl-6 mt-4 mt-0 h-full">
                     <h1 class="text-2xl font-bold text-gray-700 mb-2 underline">{{ $offer->name }}</h1>
-{{--                    <span class="border-b-2 border-gray-200"></span>--}}
                     <p class="text-xs font-medium text-gray-500">Dodane: {{ $offer->created_at->format('d.m.Y H:i') }}</p>
                     <p class="text-xs font-medium text-gray-500 mb-7">Edytowane: {{ $offer->updated_at->format('d.m.Y H:i') }}</p>
                     <p class="text-md text-gray-600">Kategoria: <span class="font-medium">{{ $offer->category->name }}</span></p>
@@ -28,7 +27,7 @@
                     @endif
 
                     <div class="mt-6 flex items-center space-x-3">
-                        <a href="" class="flex items-center text-sm text-gray-600 hover:text-gray-800">
+                        <a href="{{route('users.show', ['id' => $offer->user->id]) }}" class="flex items-center text-sm text-gray-600 hover:text-gray-800">
                             <ion-icon name="person-circle-outline" class="size-6"></ion-icon>
                             <span class="ml-1">{{ $offer->user->name }}</span>
                         </a>

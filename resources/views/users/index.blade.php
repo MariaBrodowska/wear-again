@@ -91,7 +91,7 @@
                             @foreach($users as $user)
                                 <div class="flex flex-col pt-2 bg-gray-100 rounded-sm items-center">
                                     <a href="{{ route('users.show', ['id' => $user->id]) }}" class="h-3/4">
-                                        <ion-icon name="person-circle-outline" class="size-12 text-nav-pink"></ion-icon>
+                                        <ion-icon name="person-circle-outline" class="size-12 text-nav-pink transition-transform duration-300 ease-in-out transform hover:scale-110"></ion-icon>
                                     </a>
                                     <div class="p-2 text-center">
                                         <h5 class="text-lg font-medium text-gray-700">{{ $user->name }}</h5>

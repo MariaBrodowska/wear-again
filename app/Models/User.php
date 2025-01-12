@@ -57,15 +57,17 @@ class User extends Authenticatable
 //    public function messages(){
 //        return $this->hasMany(Message::class);
 //    }
+    public function favorites(){
+        return $this->hasMany(Favorite::class);
+    }
+
     public function sentMessages(){
         return $this->hasMany(Message::class, 'sender_id');
     }
-
+    public function hasFavorite($offer_id){
+        return $this->favorites()->where('offer_id', $offer_id)->exists();
+    }
     public function receivedMessages(){
         return $this->hasMany(Message::class, 'receiver_id');
-    }
-
-    public function favorites(){
-        return $this->hasMany(Favorite::class);
     }
 }

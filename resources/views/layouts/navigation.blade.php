@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('offers.user')" :active="request()->routeIs('offers.user')">
                         {{ __('Moje ogłoszenia') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('offers.favorite')" :active="request()->routeIs('offers.fovorite')">
+                    <x-nav-link :href="route('offers.favorite')" :active="request()->routeIs('offers.favorite')">
                         {{ __('Ulubione') }}
                     </x-nav-link>
                 </div>

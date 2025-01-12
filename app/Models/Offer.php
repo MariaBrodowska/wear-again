@@ -21,10 +21,17 @@ class Offer extends Model
     public function order(){
         return $this->belongsTo(Order::class);
     }
-    public function favorites(){
-        return $this->hasMany(Favorite::class);
-    }
     public function getFavoritesCount(){
         return $this->favorites()->count();
+    }
+//    public function isFavoritedBy($userId){
+//        return $this->favorites()->where('user_id', $userId)->exists();
+//    }
+    public function favoritesCount(){
+        return $this->favorites()->count();
+    }
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }
