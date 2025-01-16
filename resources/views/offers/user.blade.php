@@ -60,6 +60,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="pagination-links mt-4 flex justify-center">
+            {{ $offers->links() }}
+        </div>
     </div>
 <script>
     function closeAlert() {
