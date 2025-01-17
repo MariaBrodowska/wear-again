@@ -15,7 +15,7 @@
             </button>
         </div>
     @endif
-    <div class="px-4 pt-7 pb-20 bg-nav-gray1">
+    <div class="px-4 py-7 bg-nav-gray1">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
             @foreach($offers as $offer)
                 <div class="flex flex-col pt-0 bg-gray-100 rounded-sm">
@@ -60,7 +60,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="pagination-links mt-4 flex justify-center">
+        <div class="pagination-links mt-6 flex justify-center">
             {{ $offers->links() }}
         </div>
     </div>

@@ -54,7 +54,7 @@ class OffersController extends Controller
         return redirect()->route('offers.user')->with('message', 'Ogłoszenie zostało usunięte');
     }
     public function user(){ //wyswietlanie moich
-        $offers = Offer::where('seller_id', Auth::id())->get();
+        $offers = Offer::where('seller_id', Auth::id())->paginate(6);
         return view('offers.user', compact('offers'));
     }
     public function show($id){ //wyswietlanie pojedynczej

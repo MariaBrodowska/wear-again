@@ -13,6 +13,17 @@
                 </div>
                 <div class="flex flex-col w-2/3 pl-6 mt-4 mt-0 h-full">
                     <h1 class="text-2xl font-bold text-gray-700 mb-2 underline">{{ $offer->name }}</h1>
+                    <form action="{{ route('favorites.change', ['id' => $offer->id]) }}" method="POST" class="self-end">
+                        @csrf
+                        <button type="submit" id="toggle-favorite" class="flex justify-center items-center" onclick="toogleFavorite({{$offer->id}})">
+                            <ion-icon
+                                name="{{ auth()->user()->hasFavorite($offer->id) ? 'heart' : 'heart-outline' }}"
+                                class="size-5 mr-1" id="heart"
+                                data-offer-id="{{ $offer->id }}">
+                            </ion-icon>
+                            {{ $offer->favoritesCount() }}
+                        </button>
+                    </form>
                     <p class="text-xs font-medium text-gray-500">Dodane: {{ $offer->created_at->format('d.m.Y H:i') }}</p>
                     <p class="text-xs font-medium text-gray-500 mb-7">Edytowane: {{ $offer->updated_at->format('d.m.Y H:i') }}</p>
                     <p class="text-md text-gray-600">Kategoria: <span class="font-medium">{{ $offer->category->name }}</span></p>
@@ -60,4 +71,16 @@
             </div>
         </div>
     </div>
+<script>
+    const favorite = document.getElementById('toggle-favorite');
+    const heart = document.getElementById('heart');
+    favorite.addEventListener('click', () => {
+        if(heart.name === 'heart'){
+            heart.name = 'heart-outline';
+        }
+        else{
+            heart.name = 'heart';
+        }
+    });
+</script>
 @endsection

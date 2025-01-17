@@ -18,11 +18,8 @@ Route::get('/onas', function () {
 Route::get('/ogloszenia/ulubione', [FavoriteController::class, 'favorite'])
     ->middleware(['auth', 'verified'])->name('offers.favorite');
 
-Route::post('/ulubione/toggle', [FavoriteController::class, 'toggleFavorite'])
-    ->name('favorites.toggle');
-
-Route::post('/add-favorite', [FavoriteController::class, 'addFavorite']);
-Route::post('/remove-favorite', [FavoriteController::class, 'removeFavorite']);
+Route::post('/ulubione/zmien', [FavoriteController::class, 'changeFavorite'])
+    ->middleware(['auth', 'verified'])->name('favorites.change');
 
 Route::get('/ogloszenia', [CategorySearchController::class, 'index'])->name('offers.index');
 Route::get('/użytkownicy', [CategorySearchController::class, 'index'])->name('users.index');
@@ -47,7 +44,6 @@ Route::delete('ogloszenia/usun/{id}', [OffersController::class, 'delete'])
 
 Route::get('/ogloszenia/{id}', [OffersController::class, 'show'])->name('offers.show');
 Route::get('/uzytkownicy/{id}', [UsersController::class, 'show'])->name('users.show');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

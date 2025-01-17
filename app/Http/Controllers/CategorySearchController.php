@@ -59,7 +59,7 @@ class CategorySearchController extends Controller
                 $query->where('name', 'like', '%' . $request->input('query') . '%')
                     ->orWhere('description', 'like', '%' . $request->input('query') . '%');
             }
-            $offers = $query->paginate(12);
+            $offers = $query->paginate(6);
             return view('offers.index', compact('offers','categories','sizes','users'));
         }
         else{
@@ -67,8 +67,7 @@ class CategorySearchController extends Controller
                 $userQuery->where('name', 'like', '%' . $request->input('query') . '%')
                     ->orWhere('email', 'like', '%' . $request->input('query') . '%');
             }
-            $users = $userQuery->paginate(12);
-
+            $users = $userQuery->paginate(6);
             return view('users.index', compact('users', 'searchType', 'categories', 'sizes'));
         }
     }
