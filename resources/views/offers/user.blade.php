@@ -20,11 +20,11 @@
             @foreach($offers as $offer)
                 <div class="flex flex-col pt-0 bg-gray-100 rounded-sm">
                     <a href="{{ route('offers.show', ['id' => $offer->id]) }}" class="h-3/4">
-                    @if ($offer->image_path)
-                        <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-full object-cover" alt="{{ $offer->name }}">
-                    @else
-                        <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-full object-cover" alt="default image">
-                    @endif
+                        @if ($offer->image_path)
+                            <img src="{{ asset('assets/img/paths/' . $offer->image_path) }}" class="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105" alt="{{ $offer->name }}">
+                        @else
+                            <img src="{{ asset('assets/img/paths/default.png') }}" class="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105" alt="default image">
+                        @endif
                     </a>
                     <div class="p-2">
                         <h5 class="text-sm font-medium text-gray-700">{{ $offer->name }}</h5>
