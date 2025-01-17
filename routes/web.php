@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OffersController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CategorySearchController;
@@ -14,6 +15,15 @@ Route::get('/', function () {
 Route::get('/onas', function () {
     return view('aboutus');
 });
+
+Route::get('/zamowienia/dodaj/{id}', [OrdersController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('orders.index');
+
+Route::post('/zamowienia/zapisz', [OrdersController::class, 'store'])
+    ->middleware(['auth', 'verified'])->name('orders.store');
+
+Route::get('/zamowienia/moje', [OrdersController::class, 'show'])
+    ->middleware(['auth', 'verified'])->name('orders.show');
 
 Route::get('/ogloszenia/ulubione', [FavoriteController::class, 'favorite'])
     ->middleware(['auth', 'verified'])->name('offers.favorite');

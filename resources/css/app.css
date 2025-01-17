@@ -21,7 +21,6 @@ html, body {
 }
 .box input::placeholder{
     color: #fff;
-
 }
 .box input:focus {
     outline: none;
@@ -33,4 +32,23 @@ html, body {
     box-shadow: 0 4px 6px rgba(255,255,255,0.1);
     text-align: center;
     padding-bottom: 50px;
+}
+.orderInput {
+    margin-top: 4px;
+    display: block;
+    width: 100%;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+}
+.orderInput::placeholder{
+    color: #b2b0b5;
+    font-weight: lighter;
+}
+.orderInput:focus {
+    border-color: #DB2777;
+    box-shadow: 0 0 0 1px;
 }

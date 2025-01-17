@@ -1,7 +1,7 @@
 @extends('offers.index')
 
 @section('content')
-    <div class="max-w-4xl mx-auto px-6 px-8 py-4">
+    <div class="max-w-4xl mx-auto px-8 py-4">
         <div class="bg-white shadow-lg sm:rounded-lg p-6">
             <div class="flex flex-col md:flex-row items-center md:items-start">
                 <div class="w-1/2">
@@ -55,16 +55,21 @@
                         </a>
                         @if($offer->seller_id == Auth::id())
                             <a href="{{ route('offers.user') }}">
-                            <button
-                                class="bg-nav-pink hover:bg-nav-pink2 text-white py-2 px-4 rounded-md transition duration-300">
-                                Otwórz moje ogłoszenia
-                            </button>
+                                <button
+                                    class="bg-nav-pink hover:bg-nav-pink2 text-white py-2 px-4 rounded-md transition duration-300">
+                                    Otwórz moje ogłoszenia
+                                </button>
                             </a>
                         @else
-                        <button
-                            class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
-                            Kup teraz
-                        </button>
+{{--                            <form action="{{route("orders.index", ['id' => $offer->id]) }}" method="POST">--}}
+{{--                                @csrf--}}
+                        <a href="{{route('orders.index', ['id' => $offer->id]) }}">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
+                                Kup teraz
+                            </button>
+                        </a>
+{{--                            </form>--}}
                         @endif
                     </div>
                 </div>
