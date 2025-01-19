@@ -17,7 +17,6 @@
                 </div>
                 @if(Route::is('offers.index') or Route::is('users.index'))
                 <div id="filters-section" class="relative flex flex-wrap gap-4 w-2/3 justify-center items-center mt-2 mb-7 max-h-0 overflow-hidden transition-all duration-1000 ease-in-out">
-                    <!--kategorie-->
                     <select name="category" class="pl-4 pr-8 py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl">
                         <option value="">Wybierz kategorię</option>
                         @foreach($categories as $category)
@@ -26,6 +25,9 @@
                             </option>
                         @endforeach
                     </select>
+                    @error('category')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                     <select name="size" class="pl-4 pr-8 py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl">
                         <option value="">Wybierz rozmiar</option>
                         @foreach($sizes as $size)
@@ -34,22 +36,34 @@
                             </option>
                         @endforeach
                     </select>
-                    <!--cena-->
+                    @error('size')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                     <input name="min_price" type="number" placeholder="Min cena (zł)" class="ml-4 sm:px-3 sm:py-2 lg:px-5 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('min_price') }}">
+                    @error('min_price')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                     <input name="max_price" type="number" placeholder="Max cena (zł)" class="ml-4 sm:px-3 sm:py-2 lg:px-5 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('max_price') }}">
-                    <!--data-->
+                    @error('max_price')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                     <div class="flex flex-col items-start gap-3 pb-2">
                         <div class="flex items-center">
                         <label for="date_from" class="text-sm font-medium text-nav-pink">Data od:</label>
-                        <input name="date_from" type="date" class="ml-4 sm:py-2 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('date_from') }}">
+                            <input name="date_from" type="date" class="ml-4 sm:py-2 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('date_from') }}">
+                            @error('date_from')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="flex items-center">
                         <label for="date_to" class="text-sm font-medium text-nav-pink">Data do:</label>
-                        <input name="date_to" type="date" class="ml-4 sm:py-2 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('date_to') }}">
+                            <input name="date_to" type="date" class="ml-4 sm:py-2 lg:py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl" value="{{ request('date_to') }}">
+                            @error('date_to')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="flex flex-col items-center gap-3 pb-2 ml-3">
-                        <!-- Sortowanie -->
                         <select name="sort" class="relative py-2 border text-sm text-black border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-300 hover:bg-pink-100 rounded-xl">
                             <option value="">Sortuj według</option>
                             <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Od najnowszych</option>
@@ -57,13 +71,15 @@
                             <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Cena: od najniższej</option>
                             <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Cena: od najwyższej</option>
                         </select>
+                        @error('sort')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
                         <div class="flex items-center">
                             <button
                                 type="button"
                                 onclick="window.location.href='{{ route('offers.index') }}'"
                                 class="relative self-center sm:px-5 sm:py-2 lg:px-10 lg:py-2 border text-sm text-white border-pink-300 px-4 py-4 hover:text-black/70 hover:bg-pink-300 hover:rounded-xl transition-all duration-500"
                             >Wyczyść filtry</button>
-                            <!--filtruj-->
                             <button
                                 type="submit"
                                 class="relative self-center ml-5 sm:px-5 sm:py-2 lg:px-10 lg:py-2 border text-sm text-white border-pink-300 px-4 py-4 hover:text-black/70 hover:bg-pink-300 hover:rounded-xl transition-all duration-500"

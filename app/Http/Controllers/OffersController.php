@@ -16,7 +16,32 @@ class OffersController extends Controller
         $sizes = Size::all();
         return view('offers.create', ['categories' => $categories], ['sizes' => $sizes]);
     }
-    public function store(Request $request){ //zapis dodanej
+    public function store(Request $request){
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'size' => 'required',
+            'category' => 'required',
+            'price' => 'required|numeric|min:0',
+            'condition' => 'required|string',
+            'photo' => 'nullable|image|max:2048',
+        ], [
+            'title.required' => 'Tytuł jest wymagany.',
+            'title.string' => 'Tytuł musi być ciągiem tekstowym.',
+            'title.max' => 'Tytuł nie może być dłuższy niż 255 znaków.',
+            'description.string' => 'Opis musi być ciągiem tekstowym.',
+            'description.max' => 'Opis nie może być dłuższy niż 1000 znaków.',
+            'size.required' => 'Wybór rozmiaru jest wymagany.',
+            'category.required' => 'Wybór kategorii jest wymagany.',
+            'price.required' => 'Cena jest wymagana.',
+            'price.numeric' => 'Cena musi być liczbą.',
+            'price.min' => 'Cena nie może być mniejsza niż 0.',
+            'condition.required' => 'Stan jest wymagany.',
+            'condition.string' => 'Stan musi być ciągiem tekstowym.',
+            'photo.image' => 'Zdjęcie musi być plikiem graficznym.',
+            'photo.max' => 'Zdjęcie nie może być większe niż 2MB.',
+        ]);
+
         $offer = new Offer();
         $offer->seller_id = Auth::id();
         $offer->name = $request->title;
@@ -37,6 +62,30 @@ class OffersController extends Controller
     }
     public function update($id, Request $request){ //zapis edytowanej
         $offer = Offer::find($id);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'size' => 'required',
+            'category' => 'required',
+            'price' => 'required|numeric|min:0',
+            'condition' => 'required|string',
+            'photo' => 'nullable|image|max:2048',
+        ], [
+            'title.required' => 'Tytuł jest wymagany.',
+            'title.string' => 'Tytuł musi być ciągiem tekstowym.',
+            'title.max' => 'Tytuł nie może być dłuższy niż 255 znaków.',
+            'description.string' => 'Opis musi być ciągiem tekstowym.',
+            'description.max' => 'Opis nie może być dłuższy niż 1000 znaków.',
+            'size.required' => 'Wybór rozmiaru jest wymagany.',
+            'category.required' => 'Wybór kategorii jest wymagany.',
+            'price.required' => 'Cena jest wymagana.',
+            'price.numeric' => 'Cena musi być liczbą.',
+            'price.min' => 'Cena nie może być mniejsza niż 0.',
+            'condition.required' => 'Stan jest wymagany.',
+            'condition.string' => 'Stan musi być ciągiem tekstowym.',
+            'photo.image' => 'Zdjęcie musi być plikiem graficznym.',
+            'photo.max' => 'Zdjęcie nie może być większe niż 2MB.',
+        ]);
         $offer->name = $request->title;
         $offer->description = $request->description;
         $offer->size_id = $request->size;

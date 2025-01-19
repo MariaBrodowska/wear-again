@@ -20,6 +20,32 @@ class CategorySearchController extends Controller
         $users = User::all();
         $searchType = $request->input('search_type', 'items');
 
+        $request->validate([
+            'category' => 'nullable',
+            'size' => 'nullable',
+            'min_price' => 'nullable|numeric|min:0',
+            'max_price' => 'nullable|numeric|min:0',
+            'date_from' => 'nullable|date',
+            'date_to' => 'nullable|date',
+            'query' => 'nullable|string|max:255',
+            'sort' => 'nullable|in:newest,oldest,price_low,price_high',
+        ], [
+            'category.exists' => 'Wybrana kategoria nie istnieje.',
+            'size.exists' => 'Wybrany rozmiar nie istnieje.',
+            'min_price.numeric' => 'Cena minimalna musi być liczbą.',
+            'min_price.min' => 'Cena minimalna nie może być mniejsza niż 0.',
+            'max_price.numeric' => 'Cena maksymalna musi być liczbą.',
+            'max_price.min' => 'Cena maksymalna nie może być mniejsza niż 0.',
+            'max_price.gte' => 'Cena maksymalna musi być większa lub równa cenie minimalnej.',
+            'date_from.date' => 'Data początkowa musi być poprawnym formatem daty.',
+            'date_from.before_or_equal' => 'Data początkowa nie może być późniejsza niż data końcowa.',
+            'date_to.date' => 'Data końcowa musi być poprawnym formatem daty.',
+            'date_to.after_or_equal' => 'Data końcowa nie może być wcześniejsza niż data początkowa.',
+            'query.string' => 'Zapytanie wyszukiwania musi być tekstem.',
+            'query.max' => 'Zapytanie wyszukiwania może mieć maksymalnie 255 znaków.',
+            'sort.in' => 'Nieprawidłowa opcja sortowania.',
+        ]);
+
         if($searchType == 'items') {
             if ($request->filled('category')) {
                 $query->where('category_id', $request->category);

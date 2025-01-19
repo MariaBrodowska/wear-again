@@ -11,63 +11,87 @@
                         <div>
                             <label for="first_name" class="block text-sm font-medium text-gray-700 mt-3">Imię</label>
                             <input type="text" name="first_name" id="first_name"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('first_name') border-red-500 @enderror"
                                    placeholder="Imię" required>
+                            @error('first_name')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="last_name" class="block text-sm font-medium text-gray-700">Nazwisko</label>
                             <input type="text" name="last_name" id="last_name"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('last_name') border-red-500 @enderror"
                                    placeholder="Nazwisko" required>
+                            @error('last_name')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                             <input type="email" name="email" id="email"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('email') border-red-500 @enderror"
                                    placeholder="Email"
                                    value="{{auth()->user()->email}}" required>
+                            @error('email')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700">Numer telefonu
                                 (opcjonalnie)</label>
                             <input type="text" name="phone" id="phone"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('phone') border-red-500 @enderror"
                                    placeholder="Numer telefonu">
+                            @error('phone')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="address" class="block text-sm font-medium text-gray-700">Adres dostawy</label>
                             <input type="text" name="address" id="address"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('address') border-red-500 @enderror"
                                    placeholder="Adres dostawy" required>
+                            @error('address')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="postal_code" class="block text-sm font-medium text-gray-700">Kod
                                 pocztowy</label>
                             <input type="text" name="postal_code" id="postal_code"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('postal_code') border-red-500 @enderror"
                                    placeholder="Kod pocztowy" required>
+                            @error('postal_code')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="city" class="block text-sm font-medium text-gray-700">Miejscowość</label>
                             <input type="text" name="city" id="city"
-                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                   class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('city') border-red-500 @enderror"
                                    placeholder="Miejscowość"
                                    required>
+                            @error('city')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
                             <label for="notes" class="block text-sm font-medium text-gray-700">Dodatkowe uwagi
                                 (opcjonalnie)</label>
                             <textarea name="notes" id="notes" rows="4"
-                                      class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink"
+                                      class="orderInput text-nav-pink focus:ring-nav-pink focus:border-nav-pink @error('notes') border-red-500 @enderror"
                                       placeholder="Dodatkowe informacje"
                             ></textarea>
+                            @error('notes')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
