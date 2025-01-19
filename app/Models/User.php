@@ -70,4 +70,9 @@ class User extends Authenticatable
     public function receivedMessages(){
         return $this->hasMany(Message::class, 'receiver_id');
     }
+    public  function hasReviewed($buyerId,$sellerId){
+        return Review::where('buyer_id', $buyerId)
+            ->where('seller_id', $sellerId)
+            ->exists();
+    }
 }

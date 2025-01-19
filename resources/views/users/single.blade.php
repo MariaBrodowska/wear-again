@@ -44,7 +44,7 @@
             @endif
         </div>
     </div>
-<div class="flex ">
+<div class="flex">
     <div class="mt-8 mr-5">
         <h3 class="text-xl text-white font-bold mb-4">Oferty użytkownika</h3>
         @if($offers->count())
@@ -70,24 +70,40 @@
         @endif
     </div>
 
-    <div class="mt-8 ml-5">
+    <div class="mt-8 ml-5 max-w-5xl">
         <h3 class="text-xl text-white font-bold mb-4">Opinie o użytkowniku</h3>
         @if($reviews->count())
-            @foreach($reviews as $review)
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 mb-4">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h5 class="font-semibold text-gray-800">{{ $review->reviewer->name }}</h5>
-                            <p class="text-sm text-gray-500">{{ $review->created_at->format('d.m.Y H:i') }}</p>
+            <div class="space-y-4">
+                @foreach ($reviews as $review)
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 overflow-hidden rounded-full bg-gray-200 flex items-center justify-center">
+                                    <ion-icon name="person-circle-outline" class="w-full h-full text-nav-pink"></ion-icon>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-semibold text-gray-800">{{ $review->buyer->name }}</p>
+                                    <p class="text-xs text-gray-500">{{ $review->created_at->format('d.m.Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="text-right w-40">
+                                @for($i=1; $i<=5; $i++)
+                                    @if($review->rating >= $i)
+                                        <ion-icon name="star" class="text-yellow-500"></ion-icon>
+                                    @elseif($review->rating >= $i - 0.5)
+                                        <ion-icon name="star-half-outline" class="text-yellow-500"></ion-icon>
+                                    @else
+                                        <ion-icon name="star-outline" class="text-gray-400"></ion-icon>
+                                    @endif
+                                @endfor
+                            </div>
                         </div>
-                        <div>
-                            <span class="text-yellow-500 text-lg font-bold">{{ $review->rating }}</span>
-                            <span class="text-sm text-gray-500">/ 5</span>
-                        </div>
+                        @if($review->comment)
+                        <p class="mt-2 text-gray-600"><strong>Komentarz:</strong> {{ $review->comment }}</p>
+                        @endif
                     </div>
-                    <p class="mt-2 text-gray-600">{{ $review->comment }}</p>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         @else
             <p class="text-gray-400">Użytkownik nie ma jeszcze żadnych opinii.</p>
         @endif

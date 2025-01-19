@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('seller_id')->constrained('users')->onDelete('cascade'); //osoba ktora oceniono, jesli usuwamy to znikaja opinie
             $table->foreignId('buyer_id')->nullable()->constrained('users')->nullonDelete(); //osoba ktora oceniono, jesli usuwamy to jej opinia zostaje
-            $table->decimal('rating', 3, 2)->unsigned();
+            $table->decimal('rating', 3)->unsigned();
             $table->text('comment')->nullable();
             $table->timestamps();
         });
