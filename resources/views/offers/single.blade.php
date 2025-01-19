@@ -61,15 +61,19 @@
                                 </button>
                             </a>
                         @else
-{{--                            <form action="{{route("orders.index", ['id' => $offer->id]) }}" method="POST">--}}
-{{--                                @csrf--}}
-                        <a href="{{route('orders.index', ['id' => $offer->id]) }}">
-                            <button
-                                class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
-                                Kup teraz
-                            </button>
-                        </a>
-{{--                            </form>--}}
+                            @if($offer->status == 'dostępny')
+                                <a href="{{route('orders.index', ['id' => $offer->id]) }}">
+                                    <button
+                                        class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
+                                        Kup teraz
+                                    </button>
+                                </a>
+                            @else
+                                <button
+                                    class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 cursor-not-allowed">
+                                    Sprzedane
+                                </button>
+                            @endif
                         @endif
                     </div>
                 </div>

@@ -25,6 +25,9 @@ Route::post('/zamowienia/zapisz', [OrdersController::class, 'store'])
 Route::get('/zamowienia/moje', [OrdersController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('orders.show');
 
+Route::get('/zamowienia/moje/{id}', [OrdersController::class, 'single'])
+    ->middleware(['auth', 'verified'])->name('orders.single');
+
 Route::get('/ogloszenia/ulubione', [FavoriteController::class, 'favorite'])
     ->middleware(['auth', 'verified'])->name('offers.favorite');
 

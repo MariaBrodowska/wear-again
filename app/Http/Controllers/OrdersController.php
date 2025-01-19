@@ -34,6 +34,9 @@ class OrdersController extends Controller
             'payment_method' => 'required|exists:payment__methods,id',
         ]);
         $offer = Offer::find($request->offer_id);
+        if($offer->status == 'sprzedane'){
+            return redirect()->route('orders.show')->with('message', 'Złożenie zamówienia nie powiodło się.');
+        }
         $delivery = Delivery_Method::find($request->delivery_method);
         $payment = Payment_Method::find($request->payment_method);
         $totalPrice = $offer->price + $delivery->price;
@@ -51,10 +54,23 @@ class OrdersController extends Controller
         $order->city = $request->city;
         $order->notes = $request->notes ?? null;
         $order->save();
+        $offer->status = 'sprzedany';
+        $offer->order_id = $order->id;
+        $offer->save();
         return redirect()->route('orders.show', ['order' => $order->id])->with('message', 'Zamówienie zostało pomyślnie złożone!');
     }
 
     public function show(){
-
+        $orders = Order::where('buyer_id', Auth::id())->get();
+        $count = count($orders);
+        return view('orders.show', compact('orders','count'));
     }
+
+    public function single($id){
+        $order = Order::where('id', $id)->where('buyer_id', Auth::id())->get()->first();
+        $count = Order::where('buyer_id', Auth::id())->count();
+        $offer = Offer::where('order_id', $id)->get()->first();
+        return view('orders.single', compact('order','count','offer'));
+    }
+
 }

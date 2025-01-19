@@ -8,7 +8,7 @@
                     <x-application-logo classes="w-15 h-12 mr-4"/>
                 </div>
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-2 sm:-my-px sm:flex">
                     <x-nav-link :href="route('offers.index')" :active="request()->routeIs('offers.index')">
                         {{ __('Strona główna') }}
                     </x-nav-link>
@@ -20,6 +20,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('offers.favorite')" :active="request()->routeIs('offers.favorite')">
                         {{ __('Ulubione') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('orders.show')" :active="request()->routeIs('orders.show')">
+                        {{ __('Moje zamówienia') }}
                     </x-nav-link>
                 </div>
             </div>

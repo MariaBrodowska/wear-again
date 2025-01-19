@@ -90,8 +90,8 @@
                             </div>
                         @endforeach
                     </div>
-
                 </div>
+
                 <div class="bg-white shadow-lg p-6 text-nav-pink sm:rounded-lg">
                     <h2 class="text-lg font-bold">Sposoby płatności</h2>
                     <hr>
@@ -128,12 +128,12 @@
                            class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition duration-300">
                             Anuluj
                         </a>
+                        <button type="submit"
+                                class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
+                            Kupuję i płacę
+                        </button>
                     </div>
                 </div>
-                <button type="submit"
-                        class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition duration-300">
-                    Kupuję i płacę
-                </button>
             </form>
         </div>
     </div>
