@@ -56,7 +56,7 @@ WearAgain to aplikacja internetowa, która umożliwia łatwą i wygodną sprzeda
 
 | Wyświetlanie użytkowników  | Profil użytkownika        |
 |------------------------------|----------------------------|
-| ![Wyświetlanie użytkowników](zrzuty-ekranu/użytkownicy.png) | ![Profil użytkownika](zrzuty-ekranu/użytkownik.png) |
+| ![Wyświetlanie użytkowników](zrzuty-ekranu/uzytkownicy.png) | ![Profil użytkownika](zrzuty-ekranu/uzytkownik.png) |
 
 ---
 
@@ -81,7 +81,7 @@ WearAgain to aplikacja internetowa, która umożliwia łatwą i wygodną sprzeda
 | ![Wyświetlanie zamówień](zrzuty-ekranu/zamowienia.png) |
 
 | Pojedyncze zamówienie      | Dodawanie opinii          |
-|------------------------------|----------------------------|---------------------------|
+|------------------------------|----------------------------|
 | ![Pojedyncze zamówienie](zrzuty-ekranu/zamowienie.png) | ![Dodawanie opinii](zrzuty-ekranu/opinia.png) |
 
 ---
