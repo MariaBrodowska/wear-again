@@ -12,23 +12,9 @@ use function Laravel\Prompts\error;
 
 class ReviewController extends Controller{
     public function add(Request $request, $id){
-        $request->validate([
-            'rating' => 'required|numeric|min:1|max:5',
-            'review' => 'nullable|string|max:1000',
-        ], [
-            'rating.required' => 'Ocena jest wymagana.',
-            'rating.integer' => 'Ocena musi być liczbą całkowitą.',
-            'rating.min' => 'Ocena musi być większa lub równa 1.',
-            'rating.max' => 'Ocena nie może być większa niż 5.',
-            'review.string' => 'Komentarz musi być tekstem.',
-            'review.max' => 'Komentarz nie może mieć więcej niż 1000 znaków.',
-        ]);
             $order = Order::find($id);
             $offer = Offer::where('order_id', $id)->get()->first();
-            $existingReview = Review::where('seller_id', $offer->user_id)->where('buyer_id', Auth::id());
-            if ($existingReview) {
-                return redirect()->route('orders.single', ['id' => $order->id])->with('message', 'Już dodałeś opinię.');
-            }
+            error_log($offer);
             $review = new Review();
             $review->seller_id = $offer->seller_id;
             $review->buyer_id = Auth::id();
@@ -39,20 +25,11 @@ class ReviewController extends Controller{
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'rating' => 'required|numeric|min:1|max:5',
-            'review' => 'nullable|string|max:1000',
-        ], [
-            'rating.required' => 'Ocena jest wymagana.',
-            'rating.integer' => 'Ocena musi być liczbą całkowitą.',
-            'rating.min' => 'Ocena musi być większa lub równa 1.',
-            'rating.max' => 'Ocena nie może być większa niż 5.',
-            'review.string' => 'Komentarz musi być tekstem.',
-            'review.max' => 'Komentarz nie może mieć więcej niż 1000 znaków.',
-        ]);
         $order = Order::find($id);
         $offer = Offer::where('order_id', $id)->get()->first();
-        $existingReview = Review::where('seller_id', $offer->seller_id)->where('buyer_id', Auth::id())->first();
+        error_log($offer->seller_id);
+        error_log($order->buyer_id);
+        $existingReview = Review::where('seller_id', $offer->seller_id)->where('buyer_id', Auth::id())->get()->first();
         $existingReview->comment = $request->review;
         $existingReview->rating = $request->rating;
         $existingReview->save();

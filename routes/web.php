@@ -30,9 +30,7 @@ Route::get('/zamowienia/moje/{id}', [OrdersController::class, 'single'])
     ->middleware(['auth', 'verified'])->name('orders.single');
 
 Route::post('/zamowienie/{id}/opinia', [ReviewController::class, 'add'])->name('orders.addReview');
-//Route::get('/zamowienie/{id}/edytujOpinie', [ReviewController::class, 'edit'])->name('orders.editReview');
 Route::put('/zamowienie/{id}/zmienOpinie', [ReviewController::class, 'update'])->name('orders.updateReview');
-
 
 Route::get('/ogloszenia/ulubione', [FavoriteController::class, 'favorite'])
     ->middleware(['auth', 'verified'])->name('offers.favorite');

@@ -4,12 +4,12 @@
     <div class="py-12 pt-0 mt-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-lg sm:rounded-lg p-6">
-                <form method="POST" action="{{ route('offers.store') }}" class="space-y-4" id="createOfferForm" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('offers.store') }}" class="space-y-4" id="createOfferForm">
                     @csrf
 
                     <div>
                         <label for="title" class="block text-sm font-medium text-gray-700">Tytuł*</label>
-                        <input type="text" name="title" id="title" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500"  placeholder="np. Biała koszulka H&M" value="{{ old('title') }}">
+                        <input type="text" name="title" id="title" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500" placeholder="np. Biała koszulka H&M" value="{{ old('title') }}">
                         @error('title')
                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror

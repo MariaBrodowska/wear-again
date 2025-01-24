@@ -17,11 +17,11 @@
     @endif
     <div class="max-w-4xl mx-auto px-8 py-4">
         <div class="bg-white shadow-lg sm:rounded-lg p-6">
-            @if($order->order_status == 'zrealizowane' && auth()->user()->hasReviewed(Auth::id(),$offer->user_id))
+            @if($order->order_status == 'zrealizowane' && !auth()->user()->hasReviewed(Auth::id(),$offer->seller_id) )
                 <div id="Review" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50 z-50 hidden">
                     <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
                         <h3 class="text-2xl font-bold text-gray-700 mb-4">Dodaj opinię</h3>
-                        <form action="{{ route('orders.addReview', $order->id) }}" method="POST">
+                        <form action="{{ route('orders.addReview', ["id"=>$order->id]) }}" method="POST">
                             @csrf
                             <div class="mb-4">
                                 <label for="rating" class="block text-sm text-gray-700">Ocena (1-5)</label>
@@ -38,11 +38,11 @@
                         </form>
                     </div>
                 </div>
-            @elseif(!auth()->user()->hasReviewed(Auth::id(),$offer->user_id))
+            @elseif($order->order_status == 'zrealizowane' && auth()->user()->hasReviewed(Auth::id(),$offer->seller_id))
                 <div id="Review" class="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50 z-50 hidden">
                     <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
                         <h3 class="text-2xl font-bold text-gray-700 mb-4">Edytuj opinię</h3>
-                        <form action="{{ route('orders.updateReview', $offer->id) }}" method="POST">
+                        <form action="{{ route('orders.updateReview', $order->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="mb-4">

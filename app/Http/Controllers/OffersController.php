@@ -24,7 +24,6 @@ class OffersController extends Controller
             'category' => 'required',
             'price' => 'required|numeric|min:0',
             'condition' => 'required|string',
-            'photo' => 'nullable|image|max:2048',
         ], [
             'title.required' => 'Tytuł jest wymagany.',
             'title.string' => 'Tytuł musi być ciągiem tekstowym.',
@@ -38,8 +37,6 @@ class OffersController extends Controller
             'price.min' => 'Cena nie może być mniejsza niż 0.',
             'condition.required' => 'Stan jest wymagany.',
             'condition.string' => 'Stan musi być ciągiem tekstowym.',
-            'photo.image' => 'Zdjęcie musi być plikiem graficznym.',
-            'photo.max' => 'Zdjęcie nie może być większe niż 2MB.',
         ]);
 
         $offer = new Offer();
@@ -69,7 +66,6 @@ class OffersController extends Controller
             'category' => 'required',
             'price' => 'required|numeric|min:0',
             'condition' => 'required|string',
-            'photo' => 'nullable|image|max:2048',
         ], [
             'title.required' => 'Tytuł jest wymagany.',
             'title.string' => 'Tytuł musi być ciągiem tekstowym.',
@@ -83,8 +79,6 @@ class OffersController extends Controller
             'price.min' => 'Cena nie może być mniejsza niż 0.',
             'condition.required' => 'Stan jest wymagany.',
             'condition.string' => 'Stan musi być ciągiem tekstowym.',
-            'photo.image' => 'Zdjęcie musi być plikiem graficznym.',
-            'photo.max' => 'Zdjęcie nie może być większe niż 2MB.',
         ]);
         $offer->name = $request->title;
         $offer->description = $request->description;
