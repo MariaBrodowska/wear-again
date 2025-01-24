@@ -46,31 +46,43 @@ WearAgain to aplikacja internetowa, która umożliwia łatwą i wygodną sprzeda
 ---
 
 ### 🌍 Ekran główny
-| Kategorie                   | Wszystkie ogłoszenia       | Pojedyncze ogłoszenie     |
-|-----------------------------|----------------------------|---------------------------|
-| ![Kategorie](zrzuty-ekranu/kategorie.png) | ![Wszystkie ogłoszenia](zrzuty-ekranu/wszystkie.png) | ![Pojedyncze ogłoszenie](zrzuty-ekranu/jedno.png) |
+| Kategorie                   | Wszystkie ogłoszenia       |
+|-----------------------------|----------------------------|
+| ![Kategorie](zrzuty-ekranu/kategorie.png) | ![Wszystkie ogłoszenia](zrzuty-ekranu/wszystkie.png) |
 
-| Ogłoszenie nieaktualne       | Wyświetlanie użytkowników  | Profil użytkownika        |
-|------------------------------|----------------------------|---------------------------|
-| ![Ogłoszenie nieaktualne](zrzuty-ekranu/sprzedane.png) | ![Wyświetlanie użytkowników](zrzuty-ekranu/użytkownicy.png) | ![Profil użytkownika](zrzuty-ekranu/użytkownik.png) |
+| Pojedyncze ogłoszenie     | Ogłoszenie nieaktualne       |
+|------------------------------|----------------------------|
+| ![Pojedyncze ogłoszenie](zrzuty-ekranu/jedno.png) | ![Ogłoszenie nieaktualne](zrzuty-ekranu/sprzedane.png) |
+
+| Wyświetlanie użytkowników  | Profil użytkownika        |
+|------------------------------|----------------------------|
+| ![Wyświetlanie użytkowników](zrzuty-ekranu/użytkownicy.png) | ![Profil użytkownika](zrzuty-ekranu/użytkownik.png) |
 
 ---
 
 ### 🛍️ Ogłoszenia
-| Dodawanie ogłoszenia         | Edytowanie ogłoszenia      | Usuwanie ogłoszenia       |
-|------------------------------|----------------------------|---------------------------|
-| ![Dodawanie ogłoszenia](zrzuty-ekranu/dodanie.png) | ![Edytowanie ogłoszenia](zrzuty-ekranu/edycja.png) | ![Usuwanie ogłoszenia](zrzuty-ekranu/usuwanie.png) |
+| Dodawanie ogłoszenia         | Edytowanie ogłoszenia      |
+|------------------------------|----------------------------|
+| ![Dodawanie ogłoszenia](zrzuty-ekranu/dodanie.png) | ![Edytowanie ogłoszenia](zrzuty-ekranu/edycja.png) |
 
-| Moje ogłoszenia              | Ulubione ogłoszenia        | Usunięte ogłoszenia       |
-|------------------------------|----------------------------|---------------------------|
-| ![Moje ogłoszenia](zrzuty-ekranu/moje.png) | ![Ulubione ogłoszenia](zrzuty-ekranu/ulubione.png) | ![Usunięte ogłoszenia](zrzuty-ekranu/usunieto.png) |
+| Usuwanie ogłoszenia       | Usunięte ogłoszenia       |
+|------------------------------|----------------------------|
+| ![Usuwanie ogłoszenia](zrzuty-ekranu/usuwanie.png) | ![Usunięte ogłoszenia](zrzuty-ekranu/usunieto.png) |
+
+| Moje ogłoszenia              | Ulubione ogłoszenia        |
+|------------------------------|----------------------------|
+| ![Moje ogłoszenia](zrzuty-ekranu/moje.png) | ![Ulubione ogłoszenia](zrzuty-ekranu/ulubione.png) |
 
 ---
 
 ### 📦 Zamówienia
-| Wyświetlanie zamówień        | Pojedyncze zamówienie      | Dodawanie opinii          |
+| Wyświetlanie zamówień        |
+|---------------------------|
+| ![Wyświetlanie zamówień](zrzuty-ekranu/zamowienia.png) |
+
+| Pojedyncze zamówienie      | Dodawanie opinii          |
 |------------------------------|----------------------------|---------------------------|
-| ![Wyświetlanie zamówień](zrzuty-ekranu/zamowienia.png) | ![Pojedyncze zamówienie](zrzuty-ekranu/zamowienie.png) | ![Dodawanie opinii](zrzuty-ekranu/opinia.png) |
+| ![Pojedyncze zamówienie](zrzuty-ekranu/zamowienie.png) | ![Dodawanie opinii](zrzuty-ekranu/opinia.png) |
 
 ---
 
