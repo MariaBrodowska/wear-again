@@ -50,8 +50,8 @@ WearAgain to aplikacja internetowa, która umożliwia łatwą i wygodną sprzeda
 |-----------------------------|----------------------------|
 | ![Kategorie](zrzuty-ekranu/kategorie.png) | ![Wszystkie ogłoszenia](zrzuty-ekranu/wszystkie.png) |
 
-| Pojedyncze ogłoszenie     | Ogłoszenie nieaktualne       |
-|------------------------------|----------------------------|
+| Pojedyncze ogłoszenie      | Ogłoszenie nieaktualne     |
+|----------------------------|----------------------------|
 | ![Pojedyncze ogłoszenie](zrzuty-ekranu/jedno.png) | ![Ogłoszenie nieaktualne](zrzuty-ekranu/sprzedane.png) |
 
 | Wyświetlanie użytkowników  | Profil użytkownika        |
@@ -69,8 +69,8 @@ WearAgain to aplikacja internetowa, która umożliwia łatwą i wygodną sprzeda
 |------------------------------|----------------------------|
 | ![Usuwanie ogłoszenia](zrzuty-ekranu/usuwanie.png) | ![Usunięte ogłoszenia](zrzuty-ekranu/usunieto.png) |
 
-| Moje ogłoszenia              | Ulubione ogłoszenia        |
-|------------------------------|----------------------------|
+| Moje ogłoszenia            | Ulubione ogłoszenia        |
+|----------------------------|----------------------------|
 | ![Moje ogłoszenia](zrzuty-ekranu/moje.png) | ![Ulubione ogłoszenia](zrzuty-ekranu/ulubione.png) |
 
 ---
@@ -81,7 +81,7 @@ WearAgain to aplikacja internetowa, która umożliwia łatwą i wygodną sprzeda
 | ![Wyświetlanie zamówień](zrzuty-ekranu/zamowienia.png) |
 
 | Pojedyncze zamówienie      | Dodawanie opinii          |
-|------------------------------|----------------------------|
+|----------------------------|----------------------------|
 | ![Pojedyncze zamówienie](zrzuty-ekranu/zamowienie.png) | ![Dodawanie opinii](zrzuty-ekranu/opinia.png) |
 
 ---
